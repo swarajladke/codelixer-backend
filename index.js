@@ -1,8 +1,8 @@
 // index.js or api.js
+import fetch from 'node-fetch';
 import express from 'express';
-const fetch = require('node-fetch');
-
 import dotenv from 'dotenv';
+
 dotenv.config();
 
 const app = express();
