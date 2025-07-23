@@ -10,7 +10,7 @@ app.use(express.json());
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 
-app.post('/correct', async (req, res) => {
+app.post("/fix", async (req, res) => {
   const { prompt } = req.body;
 
   try {
@@ -21,7 +21,7 @@ app.post('/correct', async (req, res) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'openai/gpt-3.5-turbo',
+        model:  "qwen/qwen3-coder",
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.2,
       }),
