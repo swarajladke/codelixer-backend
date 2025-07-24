@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+const OPENROUTER_API_KEY =process.env.OPENROUTER_API_KEY;
 
 app.post("/fix", async (req, res) => {
   const { prompt } = req.body;
@@ -29,13 +29,12 @@ app.post("/fix", async (req, res) => {
 
     const data = await response.json();
     const corrected = data.choices?.[0]?.message?.content?.trim();
-    res.json({ corrected });
+    res.json({ response: corrected }); // ✅ renamed here
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Something went wrong' });
   }
 });
-
 app.listen(3000, () => {
-  console.log('✅ Server running on http://localhost:3000');
+  console.log('Server is running on port 3000');
 });
