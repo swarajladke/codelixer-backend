@@ -20,7 +20,7 @@ app.post("/fix", async (req, res) => {
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${process.env.GROQ_API_KEY}`,
+        "Authorization": `Bearer ${GROQ_API_KEY}`,  // ✅ Use the variable!
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
@@ -53,4 +53,8 @@ app.post("/fix", async (req, res) => {
     console.error("❌ Groq API error:", err);
     res.status(500).json({ error: "Something went wrong with Groq API" });
   }
+});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
