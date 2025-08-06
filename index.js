@@ -26,7 +26,7 @@ app.post("/fix", async (req, res) => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "llama-3.1-8b",
+        model: "openai/gpt-oss-120b",
         messages: [
           {
             role: "system",
