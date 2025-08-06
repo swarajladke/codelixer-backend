@@ -11,6 +11,8 @@ app.use(cors());
 app.use(express.json());
 
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
+console.log("🔑 Loaded GROQ_API_KEY:", GROQ_API_KEY ? "YES" : "NO");
+
 
 app.post("/fix", async (req, res) => {
   const { prompt } = req.body;
@@ -24,7 +26,7 @@ app.post("/fix", async (req, res) => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "mixtral-8x7b-32768",
+        model: "llama-3.1-8b",
         messages: [
           {
             role: "system",
